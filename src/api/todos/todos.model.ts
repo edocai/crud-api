@@ -3,7 +3,7 @@ import * as z from 'zod';
 
 const Todo = z.object({
   content: z.string().min(1),
-  done: z.boolean(),
+  done: z.boolean().default(false),
 });
 
 //makes an type by zod infering the type
