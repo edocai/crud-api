@@ -23,3 +23,22 @@ describe('GET /api/emojis', () => {
       .expect(200, ['😀', '😳', '🙄'], done);
   });
 });
+
+describe('GET /api/todos', () => {
+  it('responds with a json message', (done) => {
+    request(app)
+      .get('/api/todos')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(
+        200,
+        [
+          {
+            content: 'hello',
+            done: true,
+          },
+        ],
+        done,
+      );
+  });
+});
