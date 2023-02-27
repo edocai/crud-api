@@ -6,7 +6,7 @@ const Todo = z.object({
   done: z.boolean().default(false),
 });
 
-//makes an type by zod infering the type
+//makes a type by zod infering the type
 type Todo = z.infer<typeof Todo>;
 
 export default Todo;
