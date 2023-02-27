@@ -14,16 +14,6 @@ describe('GET /api', () => {
   });
 });
 
-describe('GET /api/emojis', () => {
-  it('responds with a json message', (done) => {
-    request(app)
-      .get('/api/emojis')
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(200, ['😀', '😳', '🙄'], done);
-  });
-});
-
 describe('GET /api/todos', () => {
   it('responds with a json message', (done) => {
     request(app)
