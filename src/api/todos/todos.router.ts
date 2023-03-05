@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { findAll } from './todos.handlers';
+import { createOne, findAll } from './todos.handlers';
 
 const router = Router();
 
 router.get('/', findAll);
+router.post('/', createOne);
 
 export default router;

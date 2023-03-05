@@ -3,13 +3,13 @@ import { WithId } from 'mongodb';
 import * as z from 'zod';
 import { db } from '../../db';
 
-//todo model
-const Todo = z.object({
+//todo model or schema validater
+export const Todo = z.object({
   content: z.string().min(1),
-  done: z.boolean().default(false),
+  completed: z.boolean().default(false),
 });
 
-//makes a type by zod infering the type
+//makes a type by zod infering the schema validater
 export type Todo = z.infer<typeof Todo>;
 //adds mongodb id (_id) to the type
 export type TodoWithId = WithId<Todo>;
