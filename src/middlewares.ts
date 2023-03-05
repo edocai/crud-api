@@ -14,6 +14,7 @@ export function errorHandler(err: Error, req: Request, res: Response<ErrorRespon
   res.status(statusCode);
   res.json({
     message: err.message,
+    //removes stack trace when errors occur for security 
     stack: process.env.NODE_ENV === 'production' ? '🥞' : err.stack,
   });
 }
