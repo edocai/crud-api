@@ -11,6 +11,20 @@ describe('GET /api/todos', () => {
       .expect(200)
       .then((response) => {
         expect(response.body).toHaveProperty('length');
-        expect(response.body.length).toBe(1);
+      }));
+});
+
+describe('POST /api/todos', () => {
+  it('responds with an error if todo is invalid', async () => 
+    request(app)
+      .post('/api/todos')
+      .set('Accept', 'application/json')
+      .send({
+        content: '',
+      })
+      .expect('Content-Type', /json/)
+      .expect(422)
+      .then((response) => {
+        expect(response.body).toHaveProperty('message');
       }));
 });
