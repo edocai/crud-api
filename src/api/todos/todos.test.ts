@@ -27,4 +27,19 @@ describe('POST /api/todos', () => {
       .then((response) => {
         expect(response.body).toHaveProperty('message');
       }));
+  it('responds with an inserted object', async () => 
+    request(app)
+      .post('/api/todos')
+      .set('Accept', 'application/json')
+      .send({
+        content: 'Buy Milk',
+        completed: true,
+      })
+      .expect('Content-Type', /json/)
+      .expect(201)
+      .then((response) => {
+        expect(response.body).toHaveProperty('_id');
+        expect(response.body).toHaveProperty('content');
+        expect(response.body).toHaveProperty('completed');
+      }));
 });
